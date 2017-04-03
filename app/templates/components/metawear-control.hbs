@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="col-xs-12">
+		<h4>Metawear Device Connection</h4>
+		{{#unless metawearConnected}}
+			<button type="button" class="btn" {{action 'connect'}}>Connect</button>
+		{{else}}
+			<button type="button" class="btn red" {{action 'disconnect'}}>Disconnect</button>
+		{{/unless}}
+	</div>
+</div>
+{{#if metawearConnected}}
+	<div class="row">
+		<div class="col-xs-12">
+			<h4>Metawear LED Controls</h4>
+			<button type="button" class="btn red btn-sm" {{action 'playLED'}}>Turn on LED </button><br>
+			<button type="button" class="btn red btn-sm" {{action 'stopLED'}}>Turn off LEDs </button>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<h4>Metawear Accelerometer Controls</h4>
+			<button type="button" class="btn red btn-sm" {{action 'accelON'}}>Turn on Accelerometer </button><br>
+			<button type="button" class="btn red btn-sm" {{action 'accelOFF'}}>Turn off Accelerometer </button>
+		</div>
+	</div>
+
+	{{time-series-chart lineData=MWaccelHistory}}
+{{/if}}
